@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cv50ed6spmdxi"]
+
+[ext_resource type="Texture2D" uid="uid://g8c7t1mruf70" path="res://Models/InternlRingglb_tex_Ice.jpg" id="1_fxfbl"]
+
+[resource]
+resource_name = "InsideEye"
+cull_mode = 2
+albedo_color = Color(0.265671, 0.54258, 0.940226, 1)
+albedo_texture = ExtResource("1_fxfbl")
+metallic = 0.27
+roughness = 0.295455
+normal_scale = -1.1
