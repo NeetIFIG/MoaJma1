@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8gasce01wfmt"]
-
-[ext_resource type="PackedScene" uid="uid://clrqx1ejgpwfv" path="res://Models/ExternalRingglb.glb" id="1_8kjo5"]
-
-[node name="ExternalRingglb" instance=ExtResource("1_8kjo5")]
-
-[node name="AnimationPlayer" parent="." index="1"]
-autoplay = "RingAction"

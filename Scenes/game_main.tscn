@@ -1,8 +1,20 @@
-[gd_scene format=3 uid="uid://xyqgowmawmks"]
+[gd_scene load_steps=3 format=3 uid="uid://xyqgowmawmks"]
 
-[node name="GameMain" type="Node3D"]
+[ext_resource type="PackedScene" uid="uid://c6ujyfnoric4t" path="res://Scenes/p_layer.tscn" id="1_mng1u"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.828873)
-projection = 1
-fov = 22.5304
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ts12"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PLayer" parent="." instance=ExtResource("1_mng1u")]
+position = Vector2(0, -153)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(4.84, 4.84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_6ts12")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -140)
+scale = Vector2(1e-05, 1e-05)
