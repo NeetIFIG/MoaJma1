@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xyqgowmawmks"]
+[gd_scene load_steps=15 format=3 uid="uid://xyqgowmawmks"]
 
 [ext_resource type="Texture2D" uid="uid://cj872orkxwpnx" path="res://Sprites/BackGround1.jpg" id="2_2nqq6"]
 [ext_resource type="PackedScene" uid="uid://dbe40tbp3fmv2" path="res://Scenes/player.tscn" id="2_hu372"]
@@ -8,8 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://drtljd2upqwmo" path="res://Sprites/Prog.png" id="7_gjl24"]
 [ext_resource type="Script" path="res://Scripts/progress_barLIfe.gd" id="7_kc1p6"]
 [ext_resource type="Script" path="res://Scripts/BarColorEnergy.gd" id="8_hgree"]
+[ext_resource type="PackedScene" uid="uid://bm386ui4tggv2" path="res://Scenes/enemy.tscn" id="9_kosot"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ts12"]
+normal = Vector2(-0.00666652, -0.999978)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kxkbi"]
+normal = Vector2(0.0031847, 0.999995)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7egsa"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dc5fh"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01ge"]
 size = Vector2(20.0277, 88.5961)
@@ -20,12 +31,27 @@ size = Vector2(20.0277, 88.5961)
 position = Vector2(0, -130)
 texture = ExtResource("2_2nqq6")
 
-[node name="Ground" type="StaticBody2D" parent="."]
-position = Vector2(0, 420)
+[node name="Ground&Walls" type="StaticBody2D" parent="."]
+position = Vector2(0, 419)
 scale = Vector2(4.84, 4.84)
+collision_layer = 3
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground&Walls"]
+rotation = -0.00149472
 shape = SubResource("WorldBoundaryShape2D_6ts12")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Ground&Walls"]
+position = Vector2(0, -191.942)
+shape = SubResource("WorldBoundaryShape2D_kxkbi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Ground&Walls"]
+position = Vector2(-183.058, -87.1901)
+shape = SubResource("WorldBoundaryShape2D_7egsa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Ground&Walls"]
+position = Vector2(201.859, -86.7769)
+shape = SubResource("WorldBoundaryShape2D_dc5fh")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -97,3 +123,7 @@ value = 100.0
 show_percentage = false
 script = ExtResource("8_hgree")
 Player = NodePath("../../PLayerBody")
+
+[node name="Enemy" parent="." instance=ExtResource("9_kosot")]
+position = Vector2(-97, 156)
+scale = Vector2(1.15723, 1.15723)

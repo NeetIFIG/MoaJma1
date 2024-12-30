@@ -2,12 +2,13 @@ extends CharacterBody2D
 class_name playerScript
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@export var maxHealth = 30
-@onready var CurrentHealth : int = maxHealth
+@export var maxHealth = 10
+@onready var CurrentHealth : float = maxHealth
 @export var maxEnergy := 5
 @onready var  CurrentNergy : float = maxEnergy
 @onready var isFlying = false
 @onready var CanFly = true
+@onready var UnderAttack = false
 signal healthChange
 signal EnergyChange
 const SPEED = 300.0
@@ -61,7 +62,9 @@ func _process(delta: float) -> void:
 		EnergyChange.emit()
 		if (CurrentNergy <= 0):
 			CanFly = false
-	
+	if(UnderAttack):
+		CurrentHealth = clamp(CurrentHealth - 1.5 * delta, 0, maxHealth)
+		healthChange.emit()
 	if isFlying:
 		gpu_particles_2d.emitting = true
 	else:
@@ -71,6 +74,12 @@ func _Healing(value : bool) -> void:
 	IsRecivingEnergy=value
 	CanFly = true
 
+func _HurtPlayer(value : bool) -> void:
+	UnderAttack=value
+	#CurrentHealth = clamp(CurrentHealth - value, 0, maxHealth)
+	#print(CurrentHealth)
+	#healthChange.emit()
+	
 func _on_gpu_particles_2d_finished() -> void:
 	pass
 	#gpu_particles_2d.restart()

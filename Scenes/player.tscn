@@ -84,6 +84,8 @@ color_ramp = SubResource("GradientTexture1D_uqtn4")
 [sub_resource type="CircleShape2D" id="CircleShape2D_togxu"]
 
 [node name="PLayerBody" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_7v4jo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
