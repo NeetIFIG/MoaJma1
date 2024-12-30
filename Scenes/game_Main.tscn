@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://xyqgowmawmks"]
+[gd_scene load_steps=11 format=3 uid="uid://xyqgowmawmks"]
 
 [ext_resource type="Texture2D" uid="uid://cj872orkxwpnx" path="res://Sprites/BackGround1.jpg" id="2_2nqq6"]
 [ext_resource type="PackedScene" uid="uid://dbe40tbp3fmv2" path="res://Scenes/player.tscn" id="2_hu372"]
-[ext_resource type="Script" path="res://Scripts/progress_bar.gd" id="3_etn7a"]
 [ext_resource type="PackedScene" uid="uid://ch0x5s2uchajs" path="res://Scenes/Candle.tscn" id="4_hjg2r"]
+[ext_resource type="Texture2D" uid="uid://ddvgpd3hg83eb" path="res://Sprites/Back.png" id="5_qrfx8"]
+[ext_resource type="Texture2D" uid="uid://dag00qachfbpv" path="res://Sprites/Front.png" id="6_hw8fe"]
+[ext_resource type="Texture2D" uid="uid://drtljd2upqwmo" path="res://Sprites/Prog.png" id="7_gjl24"]
+[ext_resource type="Script" path="res://Scripts/progress_barLIfe.gd" id="7_kc1p6"]
+[ext_resource type="Script" path="res://Scripts/BarColorEnergy.gd" id="8_hgree"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ts12"]
 
@@ -31,7 +35,6 @@ scale = Vector2(21.64, 1.74951)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D1"]
 position = Vector2(-0.0138626, 34.5811)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_p01ge")
 
 [node name="Box2D2" type="StaticBody2D" parent="Platforms"]
@@ -46,7 +49,6 @@ position = Vector2(2, 319)
 scale = Vector2(10.4684, 2.07988)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D3"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_p01ge")
 
 [node name="Box2D4" type="StaticBody2D" parent="Platforms"]
@@ -54,7 +56,6 @@ position = Vector2(-384, 380)
 scale = Vector2(4.24239, 0.708043)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D4"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_p01ge")
 
 [node name="CandleHead" parent="." instance=ExtResource("4_hjg2r")]
@@ -73,11 +74,26 @@ position_smoothing_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 200.0
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 275.0
-offset_bottom = 52.0
+[node name="ProgressBar LIfe" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 730.0
+offset_bottom = 195.0
+scale = Vector2(0.5, 0.15)
+value = 50.0
+texture_under = ExtResource("5_qrfx8")
+texture_over = ExtResource("6_hw8fe")
+texture_progress = ExtResource("7_gjl24")
+script = ExtResource("7_kc1p6")
+Player = NodePath("../../PLayerBody")
+
+[node name="ProgressBarEnergy" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("Player")]
+offset_left = 50.0
+offset_top = 62.0
+offset_right = 300.0
+offset_bottom = 92.0
+scale = Vector2(0.789782, 0.725224)
 value = 100.0
-script = ExtResource("3_etn7a")
+show_percentage = false
+script = ExtResource("8_hgree")
 Player = NodePath("../../PLayerBody")

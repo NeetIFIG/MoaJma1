@@ -4,7 +4,7 @@ class_name playerScript
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @export var maxHealth = 30
 @onready var CurrentHealth : int = maxHealth
-@export var maxEnergy := 1000
+@export var maxEnergy := 5
 @onready var  CurrentNergy : float = maxEnergy
 @onready var isFlying = false
 @onready var CanFly = true

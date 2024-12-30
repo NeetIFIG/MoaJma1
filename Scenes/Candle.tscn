@@ -54,12 +54,10 @@ scale = Vector2(4.107, 1.78)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PointLight2D/StaticBody2D"]
 position = Vector2(-1.67397, 8.42696)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_05g2y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="PointLight2D/StaticBody2D"]
 position = Vector2(-0.456538, -23.1741)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mktrp")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -71,6 +69,7 @@ texture = ExtResource("3_vcob6")
 lifetime = 2.0
 
 [node name="Area2DHeal" type="Area2D" parent="."]
+scale = Vector2(0.879999, 1)
 script = ExtResource("4_klf05")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DHeal"]
