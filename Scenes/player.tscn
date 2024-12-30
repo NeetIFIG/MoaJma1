@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6ujyfnoric4t"]
+[gd_scene load_steps=14 format=3 uid="uid://dbe40tbp3fmv2"]
 
-[ext_resource type="Script" path="res://Scripts/area_2d.gd" id="1_2clw3"]
-[ext_resource type="Texture2D" uid="uid://bbr1r5dp7eajw" path="res://Sprites/spritesheetAlien.png" id="1_w48dv"]
-[ext_resource type="Texture2D" uid="uid://cmoraauo5fm8p" path="res://Textures/floaty_64.png" id="3_xmt71"]
+[ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_7v4jo"]
+[ext_resource type="Texture2D" uid="uid://bbr1r5dp7eajw" path="res://Sprites/spritesheetAlien.png" id="2_2f0b6"]
+[ext_resource type="Texture2D" uid="uid://cmoraauo5fm8p" path="res://Textures/floaty_64.png" id="3_4quwm"]
 
 [sub_resource type="Animation" id="Animation_yaq57"]
 resource_name = "Alien"
@@ -11,7 +11,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/path = NodePath("PLayerBody/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +26,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/Sprite2D:frame")
+tracks/0/path = NodePath("PLayerBody/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,9 +42,6 @@ _data = {
 "RESET": SubResource("Animation_yoaay")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t00mg"]
-size = Vector2(137.108, 137.108)
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hfj3u"]
 blend_mode = 1
 particles_animation = true
@@ -59,7 +56,7 @@ colors = PackedColorArray(0.903598, 0.903598, 0.903598, 0.713726, 0.145098, 0.88
 gradient = SubResource("Gradient_sl6ed")
 
 [sub_resource type="Curve" id="Curve_3gcjp"]
-_data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.167614, 0.437916), 1.05691, 1.05691, 0, 0, Vector2(0.451705, 0.661308), 0.91599, 0.91599, 0, 0, Vector2(1, 1), 0.483159, 0.0, 0, 0]
+_data = [Vector2(0, 0.0487804), 0.0, 0.0, 0, 0, Vector2(0.0977778, 0.571428), 0.763447, 0.763447, 0, 0, Vector2(0.328889, 0.725275), 0.43956, 0.43956, 0, 0, Vector2(1, 1), 0.483159, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_jdjf4"]
@@ -84,32 +81,35 @@ scale_max = 2.0
 scale_curve = SubResource("CurveTexture_jdjf4")
 color_ramp = SubResource("GradientTexture1D_uqtn4")
 
-[node name="PLayer" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_togxu"]
 
-[node name="Area2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_2clw3")
+[node name="PLayerBody" type="CharacterBody2D"]
+script = ExtResource("1_7v4jo")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("1_w48dv")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2f0b6")
 hframes = 11
 vframes = 11
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_njabu")
 }
 autoplay = "Alien"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-scale = Vector2(2.01301, 2.01301)
-shape = SubResource("RectangleShape2D_t00mg")
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Area2D"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_hfj3u")
 position = Vector2(0, 154)
 emitting = false
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_wqqri")
-texture = ExtResource("3_xmt71")
+texture = ExtResource("3_4quwm")
 lifetime = 2.5
+visibility_rect = Rect2(-500, -500, 500, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(13.162, 13.162)
+shape = SubResource("CircleShape2D_togxu")
+
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]
