@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://14akyb77fosh"]
+
+[ext_resource type="Script" path="res://Scripts/Objective_Gifts.gd" id="1_opgk5"]
+[ext_resource type="Texture2D" uid="uid://bnghl0osja3ob" path="res://Sprites/Gifts.png" id="2_0jpg7"]
+[ext_resource type="Texture2D" uid="uid://cwcrq4hyg5ayk" path="res://Textures/offset_glow.png" id="3_57cnj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq2ux"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fx5j7"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_75j6k"]
+colors = PackedColorArray(0.180005, 0.180005, 0.180005, 1, 0.168627, 0.784314, 0.176471, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8640n"]
+gradient = SubResource("Gradient_75j6k")
+
+[sub_resource type="Curve" id="Curve_d0we8"]
+_data = [Vector2(0.0222222, 0.956044), 0.0, 0.0, 0, 0, Vector2(0.528889, 0.384615), 0.141287, 0.141287, 0, 0, Vector2(1, 1), 2.47253, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_b5e5h"]
+curve = SubResource("Curve_d0we8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y1k5u"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1.5, 1, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+initial_velocity_min = 0.1
+initial_velocity_max = 5.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 360.0
+gravity = Vector3(0, -98, 0)
+radial_accel_min = -42.15
+radial_accel_max = 32.18
+scale_curve = SubResource("CurveTexture_b5e5h")
+color_ramp = SubResource("GradientTexture1D_8640n")
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(2.62453, 2.62453)
+script = ExtResource("1_opgk5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uq2ux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -16.3839)
+scale = Vector2(0.0501693, 0.0501693)
+texture = ExtResource("2_0jpg7")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_fx5j7")
+position = Vector2(1.0842e-19, -22.0992)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_y1k5u")
+texture = ExtResource("3_57cnj")
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

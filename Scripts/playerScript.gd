@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name playerScript
 @onready var gpu_particles_2d: GPUParticles2D = $GPUParticles2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var timer: Timer = $Timer
 @export var maxHealth = 10
 @onready var CurrentHealth : float = maxHealth
 @export var maxEnergy := 5
@@ -65,10 +66,14 @@ func _process(delta: float) -> void:
 	if(UnderAttack):
 		CurrentHealth = clamp(CurrentHealth - 1.5 * delta, 0, maxHealth)
 		healthChange.emit()
-	if isFlying:
-		gpu_particles_2d.emitting = true
-	else:
-		gpu_particles_2d.emitting =false
+		if (CurrentHealth <= 0 && timer.is_stopped()):
+			Death()
+	gpu_particles_2d.emitting = isFlying
+
+func Death() -> void:
+	Engine.time_scale = 0.5
+	self.get_node("CollisionShape2D").queue_free()
+	timer.start()
 
 func _Healing(value : bool) -> void:
 	IsRecivingEnergy=value
@@ -80,6 +85,6 @@ func _HurtPlayer(value : bool) -> void:
 	#print(CurrentHealth)
 	#healthChange.emit()
 	
-func _on_gpu_particles_2d_finished() -> void:
-	pass
-	#gpu_particles_2d.restart()
+func _on_timer_timeout() -> void:
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()

@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm386ui4tggv2"]
+[gd_scene load_steps=12 format=3 uid="uid://bm386ui4tggv2"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_f51mw"]
 [ext_resource type="Texture2D" uid="uid://cy1aq8agiik07" path="res://Textures/effect_4.png" id="1_ucdoi"]
-[ext_resource type="Texture2D" uid="uid://u7fae1xatvwk" path="res://icon.svg" id="3_lv68n"]
 [ext_resource type="PackedScene" uid="uid://cntdwpl558n8y" path="res://Scenes/damage_area_2d.tscn" id="4_a8lod"]
+[ext_resource type="Texture2D" uid="uid://6dmswaxafnqk" path="res://Sprites/eyes.png" id="4_iolyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fd1tg"]
 size = Vector2(75, 70)
@@ -18,54 +18,48 @@ colors = PackedColorArray(0, 0, 0, 1, 0.27451, 0.12549, 0.862745, 0.729412, 0.21
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l7ons"]
 gradient = SubResource("Gradient_eop0b")
 
-[sub_resource type="Curve" id="Curve_6ocfr"]
-_data = [Vector2(0, 0.747253), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Curve" id="Curve_ej78y"]
+_data = [Vector2(0.00888889, 0), 0.0, 0.0, 0, 0, Vector2(0.52, 0.538461), 1.62825, 1.62825, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_cxxg8"]
-curve = SubResource("Curve_6ocfr")
+curve = SubResource("Curve_ej78y")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mpj3q"]
 particle_flag_disable_z = true
-angle_min = -200.0
-angle_max = 400.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+angular_velocity_min = 20.0
+angular_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.35
-scale_max = 0.4
+scale_min = 0.1
+scale_max = 0.5
 scale_curve = SubResource("CurveTexture_cxxg8")
 color_ramp = SubResource("GradientTexture1D_l7ons")
 hue_variation_min = -1.0
 hue_variation_max = -0.69
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mjlp8"]
-blend_mode = 1
-
 [node name="Enemy" type="Node2D"]
 
 [node name="EnemyBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_f51mw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBody2D"]
-scale = Vector2(0.8, 0.8)
+scale = Vector2(0.628283, 0.628283)
 shape = SubResource("RectangleShape2D_fd1tg")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="EnemyBody2D"]
+z_index = 3
 material = SubResource("CanvasItemMaterial_j6xh4")
 scale = Vector2(0.487659, 0.486041)
-amount = 4
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_mpj3q")
 texture = ExtResource("1_ucdoi")
-lifetime = 3.0
-preprocess = 2.0
-explosiveness = 0.2
-
-[node name="Sprite2D" type="Sprite2D" parent="EnemyBody2D"]
-modulate = Color(1, 1, 1, 0.396078)
-material = SubResource("CanvasItemMaterial_mjlp8")
-scale = Vector2(0.46875, 0.421875)
-texture = ExtResource("3_lv68n")
+visibility_rect = Rect2(-500, -500, 500, 500)
 
 [node name="DamageArea2D" parent="EnemyBody2D" instance=ExtResource("4_a8lod")]
-scale = Vector2(3.68, 3.4)
+scale = Vector2(2.7131, 2.50667)
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyBody2D"]
+scale = Vector2(0.0531338, 0.0531338)
+texture = ExtResource("4_iolyt")
