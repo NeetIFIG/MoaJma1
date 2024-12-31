@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwoxior408d51"]
+
+[ext_resource type="AudioStream" uid="uid://cnjr7i83yisgv" path="res://Music/foolboymedia.ogg" id="1_viuur"]
+
+[node name="MusciGame" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_viuur")
+volume_db = -0.265
+autoplay = true
+parameters/looping = true

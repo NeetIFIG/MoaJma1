@@ -83,7 +83,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Control" type="Control" parent="Panel/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(0, 1050)
+custom_minimum_size = Vector2(0, 1750)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -93,9 +93,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.5
-offset_right = 11.0
-offset_bottom = -3.5
+offset_right = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Assets
@@ -132,6 +130,31 @@ Snowflake sprite: mkwong98
 snow-flake On opengameart.org
 
 Font: Syaf Rizal
-More January On datafont"
+More January On datafont
+
+Fairy_sound.wav by AdriMB86
+https://freesound.org/s/410259/
+License: Creative Commons 0
+
+Power rise magic pitch up.wav by ryusa 
+https://freesound.org/s/531172/
+License: Attribution 4.0
+
+Life Lost Game Over by noirenex
+https://freesound.org/s/159408/
+License: Creative Commons 0
+
+Floating In The Midnight Breeze by FoolBoyMedia
+https://freesound.org/s/332323/
+License: Attribution NonCommercial 4.0
+
+WinFantasia.wav by Fupicat
+https://freesound.org/s/521645/
+License: Creative Commons 0
+
+impact1.wav by CJspellsfish
+https://freesound.org/s/609572/
+License: Creative Commons 0
+"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -16,7 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 		
 func _physics_process(delta):
-	var collision = move_and_collide( my_vectorVel* SPEED * delta)
+	var collision = move_and_collide( my_vectorVel * SPEED * delta)
 	if collision:
 		"""
 		if (collision.get_collider().name == "PLayerBody"):

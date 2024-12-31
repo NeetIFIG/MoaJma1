@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://14akyb77fosh"]
+[gd_scene load_steps=12 format=3 uid="uid://14akyb77fosh"]
 
 [ext_resource type="Script" path="res://Scripts/Objective_Gifts.gd" id="1_opgk5"]
 [ext_resource type="Texture2D" uid="uid://bnghl0osja3ob" path="res://Sprites/Gifts.png" id="2_0jpg7"]
 [ext_resource type="Texture2D" uid="uid://cwcrq4hyg5ayk" path="res://Textures/offset_glow.png" id="3_57cnj"]
+[ext_resource type="AudioStream" uid="uid://bejiila77o12f" path="res://SFX/521645__fupicat__winfantasia.ogg" id="4_oopxn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq2ux"]
 
@@ -64,6 +65,9 @@ one_shot = true
 
 [node name="Timer" type="Timer" parent="GPUParticles2D"]
 wait_time = 3.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_oopxn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="GPUParticles2D/Timer" to="." method="_on_timer_timeout"]

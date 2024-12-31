@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccjgqd5edco8q"]
+[gd_scene load_steps=9 format=3 uid="uid://ccjgqd5edco8q"]
 
 [ext_resource type="Texture2D" uid="uid://c5ceo1cgrvwgh" path="res://Sprites/BackGround2.jpg" id="1_ytiuo"]
 [ext_resource type="PackedScene" uid="uid://4i1fkdfodc1m" path="res://Scenes/Walls.tscn" id="2_5baxt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bm386ui4tggv2" path="res://Scenes/enemy.tscn" id="4_k12vs"]
 [ext_resource type="PackedScene" uid="uid://14akyb77fosh" path="res://Scenes/Gfits.tscn" id="5_xxt0g"]
 [ext_resource type="PackedScene" uid="uid://dbe40tbp3fmv2" path="res://Scenes/player.tscn" id="6_gvon5"]
+[ext_resource type="PackedScene" uid="uid://bna0i06c2erko" path="res://Scenes/LIghtsObstacle.tscn" id="7_mgtga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qh171"]
 size = Vector2(20.0277, 88.5961)
@@ -24,6 +25,11 @@ position = Vector2(0, -154.339)
 [node name="CollisionShape2D4" parent="Ground&Walls" index="3"]
 position = Vector2(176.033, -86.7769)
 
+[node name="Sprite2D" parent="Ground&Walls" index="4"]
+modulate = Color(0.321728, 0.321728, 0.321728, 1)
+position = Vector2(0, -80.1653)
+scale = Vector2(0.432316, 0.432316)
+
 [node name="CandleHead" parent="." instance=ExtResource("3_7247v")]
 position = Vector2(251, 216)
 scale = Vector2(0.670823, 0.670823)
@@ -35,15 +41,15 @@ scale = Vector2(0.231, 0.231)
 [node name="Area2D2" parent="." instance=ExtResource("5_xxt0g")]
 position = Vector2(-621, 393)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Node2DEnemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Node2D" instance=ExtResource("4_k12vs")]
+[node name="Enemy" parent="Node2DEnemies" instance=ExtResource("4_k12vs")]
 position = Vector2(337, -201)
 
-[node name="Enemy2" parent="Node2D" instance=ExtResource("4_k12vs")]
+[node name="Enemy2" parent="Node2DEnemies" instance=ExtResource("4_k12vs")]
 position = Vector2(559, 169)
 
-[node name="Enemy3" parent="Node2D" instance=ExtResource("4_k12vs")]
+[node name="Enemy3" parent="Node2DEnemies" instance=ExtResource("4_k12vs")]
 position = Vector2(-200, 1)
 
 [node name="Platforms" type="Node2D" parent="."]
@@ -53,6 +59,14 @@ position = Vector2(736, 0)
 scale = Vector2(10.6985, 5.41711)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D1"]
+position = Vector2(-0.0138626, 34.5811)
+shape = SubResource("RectangleShape2D_qh171")
+
+[node name="Box2D5" type="StaticBody2D" parent="Platforms"]
+position = Vector2(-121, -296)
+scale = Vector2(-13.6123, 2.38122)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D5"]
 position = Vector2(-0.0138626, 34.5811)
 shape = SubResource("RectangleShape2D_qh171")
 
@@ -76,5 +90,11 @@ scale = Vector2(14.7624, 4.1438)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D4"]
 shape = SubResource("RectangleShape2D_qh171")
+
+[node name="LightRed" parent="." instance=ExtResource("7_mgtga")]
+position = Vector2(121, -109)
+
+[node name="LightRed2" parent="." instance=ExtResource("7_mgtga")]
+position = Vector2(-393, 9)
 
 [editable path="Ground&Walls"]

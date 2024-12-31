@@ -10,6 +10,10 @@ class_name playerScript
 @onready var isFlying = false
 @onready var CanFly = true
 @onready var UnderAttack = false
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var audio_stream_player_2d_2: AudioStreamPlayer2D = $AudioStreamPlayer2D2
+@onready var audio_stream_player_2d_3: AudioStreamPlayer2D = $AudioStreamPlayer2D3
+
 signal healthChange
 signal EnergyChange
 const SPEED = 300.0
@@ -29,6 +33,8 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("ActivateFly") and CanFly:
 		isFlying = true
+		if(!audio_stream_player_2d.playing):
+			audio_stream_player_2d.play()
 		var directionY := Input.get_axis("ui_up", "ui_down")
 		if directionY:
 			velocity.y = directionY * SPEED
@@ -36,6 +42,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 	else:
 		isFlying = false
+		audio_stream_player_2d.stop()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -52,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	sprite_2d.set_rotation_degrees (ROTATION_AMOUNT*direction)
 	
 	if Input.is_action_just_pressed("ExitGame"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 
 	move_and_slide()
 	
@@ -70,13 +77,16 @@ func _process(delta: float) -> void:
 	if(UnderAttack):
 		CurrentHealth = clamp(CurrentHealth - 1.5 * delta, 0, maxHealth)
 		healthChange.emit()
+		if (!audio_stream_player_2d_3.playing):
+			audio_stream_player_2d_3.play()
 		if (CurrentHealth <= 0 && timer.is_stopped()):
 			Death()
 	gpu_particles_2d.emitting = isFlying
 
 func Death() -> void:
+	audio_stream_player_2d_2.play()
 	Engine.time_scale = 0.5
-	self.get_node("CollisionShape2D").queue_free()
+	#self.get_node("CollisionShape2D").queue_free()
 	timer.start()
 
 func _Healing(value : bool) -> void:

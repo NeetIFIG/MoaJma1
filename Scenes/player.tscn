@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dbe40tbp3fmv2"]
+[gd_scene load_steps=22 format=3 uid="uid://dbe40tbp3fmv2"]
 
 [ext_resource type="Script" path="res://Scripts/playerScript.gd" id="1_7v4jo"]
 [ext_resource type="Texture2D" uid="uid://bbr1r5dp7eajw" path="res://Sprites/spritesheetAlien.png" id="2_2f0b6"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://drtljd2upqwmo" path="res://Sprites/Prog.png" id="6_748va"]
 [ext_resource type="Script" path="res://Scripts/progress_barLIfe.gd" id="7_q3qyr"]
 [ext_resource type="Script" path="res://Scripts/BarColorEnergy.gd" id="8_e0ped"]
+[ext_resource type="AudioStream" uid="uid://b21d2woj34j67" path="res://SFX/adrimb86__fairy_sound.ogg" id="9_x6iju"]
+[ext_resource type="AudioStream" uid="uid://cjt2t0gphdo7q" path="res://SFX/noirenex-lost-game-over.ogg" id="10_ef62l"]
+[ext_resource type="AudioStream" uid="uid://unclaf3b1oqi" path="res://SFX/609572__cjspellsfish__impact1.ogg" id="11_tluj6"]
 
 [sub_resource type="Animation" id="Animation_yaq57"]
 resource_name = "Alien"
@@ -153,5 +156,17 @@ scale = Vector2(1e-05, 1e-05)
 offset = Vector2(0, -25)
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_x6iju")
+volume_db = -5.049
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_ef62l")
+volume_db = -3.029
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_tluj6")
+volume_db = -2.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

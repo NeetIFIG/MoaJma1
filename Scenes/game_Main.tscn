@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://xyqgowmawmks"]
+[gd_scene load_steps=9 format=3 uid="uid://xyqgowmawmks"]
 
 [ext_resource type="Texture2D" uid="uid://cj872orkxwpnx" path="res://Sprites/BackGround1.jpg" id="2_2nqq6"]
 [ext_resource type="PackedScene" uid="uid://dbe40tbp3fmv2" path="res://Scenes/player.tscn" id="2_hu372"]
 [ext_resource type="PackedScene" uid="uid://ch0x5s2uchajs" path="res://Scenes/Candle.tscn" id="4_hjg2r"]
 [ext_resource type="PackedScene" uid="uid://4i1fkdfodc1m" path="res://Scenes/Walls.tscn" id="6_78ur1"]
+[ext_resource type="PackedScene" uid="uid://bna0i06c2erko" path="res://Scenes/LIghtsObstacle.tscn" id="7_ocxiq"]
 [ext_resource type="PackedScene" uid="uid://bm386ui4tggv2" path="res://Scenes/enemy.tscn" id="9_kosot"]
 [ext_resource type="PackedScene" uid="uid://14akyb77fosh" path="res://Scenes/Gfits.tscn" id="10_sarim"]
 
@@ -73,3 +74,16 @@ position = Vector2(-330, 133)
 position = Vector2(783, 379)
 
 [node name="Ground&Walls" parent="." instance=ExtResource("6_78ur1")]
+
+[node name="CollisionShape2D3" parent="Ground&Walls" index="1"]
+position = Vector2(0, -123.14)
+
+[node name="Sprite2D" parent="Ground&Walls" index="4"]
+modulate = Color(0.321728, 0.321728, 0.321728, 1)
+position = Vector2(0, -80.1653)
+scale = Vector2(0.432316, 0.432316)
+
+[node name="LightRed" parent="." instance=ExtResource("7_ocxiq")]
+position = Vector2(-262, -13)
+
+[editable path="Ground&Walls"]

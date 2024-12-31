@@ -38,5 +38,5 @@ shape = SubResource("WorldBoundaryShape2D_dc5fh")
 modulate = Color(0.321728, 0.321728, 0.321728, 1)
 z_index = -10
 position = Vector2(0, -80.1653)
-scale = Vector2(0.432316, 0.432316)
+scale = Vector2(0.566959, 0.566959)
 texture = ExtResource("1_q7iwb")
