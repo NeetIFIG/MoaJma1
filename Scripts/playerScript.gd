@@ -17,7 +17,7 @@ class_name playerScript
 signal healthChange
 signal EnergyChange
 const SPEED = 300.0
-const JUMP_VELOCITY = -450.0
+const JUMP_VELOCITY = -500.0
 const ROTATION_AMOUNT = 12
 
 func  _ready() -> void:

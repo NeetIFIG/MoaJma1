@@ -19,5 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_timer_timeout() -> void:
 	if (get_tree().current_scene.name == "World1"):
 		get_tree().change_scene_to_file("res://Scenes/world_2.tscn")
+	elif (get_tree().current_scene.name == "World2"):
+		get_tree().change_scene_to_file("res://Scenes/world_3.tscn")
 	else:
-		print("No more levels")
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")

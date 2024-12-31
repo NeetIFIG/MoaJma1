@@ -26,8 +26,6 @@ position = Vector2(0, -154.339)
 position = Vector2(176.033, -86.7769)
 
 [node name="Sprite2D" parent="Ground&Walls" index="4"]
-modulate = Color(0.321728, 0.321728, 0.321728, 1)
-position = Vector2(0, -80.1653)
 scale = Vector2(0.432316, 0.432316)
 
 [node name="CandleHead" parent="." instance=ExtResource("3_7247v")]

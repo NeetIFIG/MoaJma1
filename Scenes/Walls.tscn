@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cj0eeeqdp46lq" path="res://Sprites/WinterBackGround.jpg" id="1_q7iwb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6ts12"]
-normal = Vector2(-0.00666652, -0.999978)
+normal = Vector2(5.02398e-07, -1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kxkbi"]
 normal = Vector2(0.0031847, 0.999995)
@@ -19,7 +19,6 @@ position = Vector2(0, 419)
 scale = Vector2(4.84, 4.84)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -0.00149472
 shape = SubResource("WorldBoundaryShape2D_6ts12")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]

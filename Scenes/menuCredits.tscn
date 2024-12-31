@@ -71,13 +71,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 
-[node name="VScrollBar" type="VScrollBar" parent="Panel/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 3
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
