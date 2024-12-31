@@ -24,6 +24,8 @@ func  _ready() -> void:
 	healthChange.emit()
 	EnergyChange.emit()
 func _physics_process(delta: float) -> void:
+	if  (CurrentHealth <= 0):
+		return
 	#Gravity
 	if not is_on_floor() and !isFlying:
 		velocity += get_gravity() * delta
@@ -57,11 +59,9 @@ func _physics_process(delta: float) -> void:
 		gpu_particles_2d.emitting = 0
 	"""
 	sprite_2d.set_rotation_degrees (ROTATION_AMOUNT*direction)
-	
+	move_and_slide()
 	if Input.is_action_just_pressed("ExitGame"):
 		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
-
-	move_and_slide()
 	
 @onready var IsRecivingEnergy = false
 

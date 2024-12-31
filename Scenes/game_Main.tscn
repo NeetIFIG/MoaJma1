@@ -75,6 +75,9 @@ position = Vector2(783, 379)
 
 [node name="Ground&Walls" parent="." instance=ExtResource("6_78ur1")]
 
+[node name="CollisionShape2D" parent="Ground&Walls" index="0"]
+position = Vector2(0, -2.06612)
+
 [node name="CollisionShape2D3" parent="Ground&Walls" index="1"]
 position = Vector2(0, -123.14)
 
