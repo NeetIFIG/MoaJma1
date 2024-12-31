@@ -62,4 +62,8 @@ process_material = SubResource("ParticleProcessMaterial_y1k5u")
 texture = ExtResource("3_57cnj")
 one_shot = true
 
+[node name="Timer" type="Timer" parent="GPUParticles2D"]
+wait_time = 3.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="GPUParticles2D/Timer" to="." method="_on_timer_timeout"]

@@ -55,7 +55,7 @@ scale = Vector2(0.487659, 0.486041)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_mpj3q")
 texture = ExtResource("1_ucdoi")
-visibility_rect = Rect2(-500, -500, 500, 500)
+visibility_rect = Rect2(-1000, -1000, 1000, 1000)
 
 [node name="DamageArea2D" parent="EnemyBody2D" instance=ExtResource("4_a8lod")]
 scale = Vector2(2.7131, 2.50667)
@@ -63,3 +63,9 @@ scale = Vector2(2.7131, 2.50667)
 [node name="Sprite2D" type="Sprite2D" parent="EnemyBody2D"]
 scale = Vector2(0.0531338, 0.0531338)
 texture = ExtResource("4_iolyt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="EnemyBody2D"]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="screen_entered" from="EnemyBody2D/VisibleOnScreenNotifier2D" to="EnemyBody2D" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="EnemyBody2D/VisibleOnScreenNotifier2D" to="EnemyBody2D" method="_on_visible_on_screen_notifier_2d_screen_exited"]

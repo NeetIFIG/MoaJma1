@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6wu1ae1hv4id"]
+
+[ext_resource type="Texture2D" uid="uid://b3h26wxv7c3b6" path="res://Textures/snowflake.png" id="1_srfpq"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_iihf0"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_3g0i7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.817778, 0.516483), -1.82752, -1.82752, 0, 0, Vector2(1, 0), -2.62706, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c5pr5"]
+curve = SubResource("Curve_3g0i7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hjvn4"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(350, 1, 1)
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+angular_velocity_min = -45.0
+angular_velocity_max = 45.0
+gravity = Vector3(0, 98, 0)
+radial_accel_min = -45.0
+radial_accel_max = 45.0
+scale_min = 0.2
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_c5pr5")
+color = Color(0.521141, 0.521141, 0.521141, 1)
+
+[node name="Snow" type="GPUParticles2D"]
+material = SubResource("CanvasItemMaterial_iihf0")
+position = Vector2(607, -48)
+scale = Vector2(-2.00979, 1.37696)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_hjvn4")
+texture = ExtResource("1_srfpq")
+lifetime = 6.0
+preprocess = 5.0

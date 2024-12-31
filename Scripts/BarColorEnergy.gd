@@ -2,6 +2,7 @@ extends ProgressBar
 @export var Player : playerScript
 
 func _ready() -> void:
+	value = Player.maxEnergy
 	var sbf = StyleBoxFlat.new()
 	add_theme_stylebox_override("fill", sbf)
 	sbf.bg_color = Color(0.204, 0.941, 0.839)

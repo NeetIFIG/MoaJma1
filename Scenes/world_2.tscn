@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://ccjgqd5edco8q"]
+
+[ext_resource type="Texture2D" uid="uid://c5ceo1cgrvwgh" path="res://Sprites/BackGround2.jpg" id="1_ytiuo"]
+[ext_resource type="PackedScene" uid="uid://4i1fkdfodc1m" path="res://Scenes/Walls.tscn" id="2_5baxt"]
+[ext_resource type="PackedScene" uid="uid://ch0x5s2uchajs" path="res://Scenes/Candle.tscn" id="3_7247v"]
+[ext_resource type="PackedScene" uid="uid://bm386ui4tggv2" path="res://Scenes/enemy.tscn" id="4_k12vs"]
+[ext_resource type="PackedScene" uid="uid://14akyb77fosh" path="res://Scenes/Gfits.tscn" id="5_xxt0g"]
+[ext_resource type="PackedScene" uid="uid://dbe40tbp3fmv2" path="res://Scenes/player.tscn" id="6_gvon5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qh171"]
+size = Vector2(20.0277, 88.5961)
+
+[node name="World2" type="Node2D"]
+
+[node name="BackGround2" type="Sprite2D" parent="."]
+position = Vector2(0, -118)
+texture = ExtResource("1_ytiuo")
+
+[node name="Ground&Walls" parent="." instance=ExtResource("2_5baxt")]
+
+[node name="CollisionShape2D3" parent="Ground&Walls" index="1"]
+position = Vector2(0, -154.339)
+
+[node name="CollisionShape2D4" parent="Ground&Walls" index="3"]
+position = Vector2(176.033, -86.7769)
+
+[node name="CandleHead" parent="." instance=ExtResource("3_7247v")]
+position = Vector2(251, 216)
+scale = Vector2(0.670823, 0.670823)
+
+[node name="PLayerBody" parent="." instance=ExtResource("6_gvon5")]
+position = Vector2(744, -128)
+scale = Vector2(0.231, 0.231)
+
+[node name="Area2D2" parent="." instance=ExtResource("5_xxt0g")]
+position = Vector2(-621, 393)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("4_k12vs")]
+position = Vector2(337, -201)
+
+[node name="Enemy2" parent="Node2D" instance=ExtResource("4_k12vs")]
+position = Vector2(559, 169)
+
+[node name="Enemy3" parent="Node2D" instance=ExtResource("4_k12vs")]
+position = Vector2(-200, 1)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Box2D1" type="StaticBody2D" parent="Platforms"]
+position = Vector2(736, 0)
+scale = Vector2(10.6985, 5.41711)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D1"]
+position = Vector2(-0.0138626, 34.5811)
+shape = SubResource("RectangleShape2D_qh171")
+
+[node name="Box2D2" type="StaticBody2D" parent="Platforms"]
+position = Vector2(334, -52)
+scale = Vector2(10.7108, 2.22951)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D2"]
+shape = SubResource("RectangleShape2D_qh171")
+
+[node name="Box2D3" type="StaticBody2D" parent="Platforms"]
+position = Vector2(327, 332)
+scale = Vector2(26.5309, 1.76683)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D3"]
+shape = SubResource("RectangleShape2D_qh171")
+
+[node name="Box2D4" type="StaticBody2D" parent="Platforms"]
+position = Vector2(-125, 228)
+scale = Vector2(14.7624, 4.1438)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Box2D4"]
+shape = SubResource("RectangleShape2D_qh171")
+
+[editable path="Ground&Walls"]

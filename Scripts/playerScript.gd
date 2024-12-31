@@ -13,8 +13,12 @@ class_name playerScript
 signal healthChange
 signal EnergyChange
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -450.0
 const ROTATION_AMOUNT = 12
+
+func  _ready() -> void:
+	healthChange.emit()
+	EnergyChange.emit()
 func _physics_process(delta: float) -> void:
 	#Gravity
 	if not is_on_floor() and !isFlying:

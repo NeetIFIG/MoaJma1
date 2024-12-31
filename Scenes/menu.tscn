@@ -1,0 +1,168 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjb8jmpj3ugd8"]
+
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_fy6jr"]
+[ext_resource type="Texture2D" uid="uid://ct0dbfwek8hj" path="res://Sprites/MenuBackGround.jpg" id="2_lwibj"]
+[ext_resource type="PackedScene" uid="uid://c6wu1ae1hv4id" path="res://Scenes/snow.tscn" id="3_adfdf"]
+[ext_resource type="Texture2D" uid="uid://d4lw6d2dnhb51" path="res://Sprites/CandyCover.png" id="4_orj78"]
+[ext_resource type="FontFile" uid="uid://1cr0tvivxke0" path="res://More January.ttf" id="5_ku560"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7qmgd"]
+texture = ExtResource("2_lwibj")
+modulate_color = Color(0.966854, 0.949256, 0.762165, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btqka"]
+texture = ExtResource("4_orj78")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u15fq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lavbu"]
+bg_color = Color(0.807875, 0.159228, 0.0602012, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1wh2"]
+bg_color = Color(0.424016, 0.0618619, 0.0137939, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1aw0"]
+bg_color = Color(0.980392, 0.0980392, 0.152941, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fy6jr")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7qmgd")
+
+[node name="Snow" parent="." instance=ExtResource("3_adfdf")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -276.0
+offset_right = 300.0
+offset_bottom = 284.67
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_btqka")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -140.0
+offset_right = 120.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Play" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u15fq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lavbu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1wh2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1aw0")
+text = "Play"
+
+[node name="Credits" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u15fq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lavbu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1wh2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1aw0")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Control/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u15fq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lavbu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1wh2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_s1aw0")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.5
+offset_top = -268.0
+offset_right = 272.5
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0.92549, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/font = ExtResource("5_ku560")
+theme_override_font_sizes/font_size = 60
+text = "Alien Christmas "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/Panel/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
